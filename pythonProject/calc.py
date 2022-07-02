@@ -48,8 +48,8 @@ elif choice == "a":
     n = int(input("Enter the number of periods:"))
     interest = float(input("Enter the loan interest:"))
     i = (interest / (12 * 100))
-    monthly = principal * ((i * math.pow((1 + i), n)) / (math.pow((1 + i),n)-1))
-    print("Your monthly payment =", math.floor(monthly) + 1,"!")
+    monthly = math.ceil(principal * ((i * math.pow((1 + i), n)) / (math.pow((1 + i),n)-1)))
+    print("Your monthly payment =", monthly,"!")
 elif choice == "p":
     monthly = float(input("Enter the monthly payment:"))
     n = int(input("Enter the number of periods:"))
