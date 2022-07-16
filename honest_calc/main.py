@@ -10,6 +10,14 @@ msg_4 = "Do you want to store the result? (y / n):"
 
 msg_5 = "Do you want to continue calculations? (y / n):"
 
+msg_6 = " ... lazy"
+
+msg_7 = " ... very lazy"
+
+msg_8 = " ... very, very lazy"
+
+msg_9 = "You are"
+
 memory = 0
 memory = float(memory)
 
@@ -41,11 +49,41 @@ def save_to_memory(answer): # funkcja zapisywania wyniku do pamieci
             if answer == "y":
                 return memory
             elif answer == "n":
-                break
+                quit()
             else:
                 continue
         else:
             continue
+
+def is_one_digit(v): # funkcja sprawdza czy liczba jest cyfrą  i jest typu int
+    if -10 < v < 10 and int(v) == v:
+        return True
+    else:
+        return False
+
+def check(v1, v2, v3):
+
+    msg = ""
+    while True:
+
+        if is_one_digit(v1) and is_one_digit(v2):
+            msg = msg + msg_6
+
+        if (v1 == 1 or v2 == 1) and v3 == "*":
+            msg = msg + msg_7
+
+        if (v1 == 0 or v2 == 0) and (v3 == "*" or v3 == "+" or v3 == "-"):
+            msg = msg + msg_8
+
+        if msg != "":
+            msg = msg_9 + msg
+            print(msg)
+            break
+
+        else:
+            break
+
+
 
 while True:
     print(msg_0)
@@ -62,6 +100,7 @@ while True:
         x = float(x)
         y = float(y)
         if oper == "+" or oper == "-" or oper == "*" or oper == "/": #sprawdza czy wprowadzony operator jest poprawny
+            check(x, y, oper)
             if oper == "+":
                 result = x + y
                 print(result)
